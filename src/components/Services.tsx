@@ -1,44 +1,38 @@
-import { Users, Sparkles, ShieldCheck, Heart, Globe, MapPin, MessageCircle } from 'lucide-react';
+import { BookOpen, Brain, Layers3, MessageCircle, ShieldCheck, Target, TestTube2, Users } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 
 const Services = () => {
   const services = [
     {
-      icon: Users,
-      title: 'Bireysel Danışmanlık',
-      description: 'Duygusal zorlanmalarınızı, yaşamınızdaki tekrar eden örüntüleri ve kendinizi daha iyi anlama ihtiyacınızı birlikte ele alabileceğimiz bireysel bir danışmanlık süreci.',
-      features: ['Kişiye özel görüşme planı', 'Düzenli seans takibi', 'Güvenli paylaşım alanı', 'Sürece uygun hedef belirleme'],
+      icon: Target,
+      title: 'KPSS Eğitim Danışmanlığı',
+      description: 'Sınav temposunu, odaklanmayı ve düzenli ilerlemeyi destekleyen yapılandırılmış bir süreç.',
     },
     {
-      icon: Sparkles,
-      title: 'Ergen ve Genç Yetişkin Danışmanlığı',
-      description: 'Kimlik gelişimi, sınav baskısı, aile ilişkileri ve gelecek kaygısı gibi dönemsel zorlanmalarda destekleyici bir danışmanlık alanı sunulur.',
-      features: ['Dönemsel ihtiyaç analizi', 'Akademik ve sosyal uyum desteği', 'Duygusal farkındalık çalışmaları', 'Aile ile iş birliği çerçevesi'],
+      icon: BookOpen,
+      title: 'AGS Eğitim Danışmanlığı',
+      description: 'Öğrencinin hedefe göre çalışma düzeni kurmasına yardımcı olan bireysel danışmanlık.',
+    },
+    {
+      icon: Users,
+      title: 'YKS Eğitim Danışmanlığı',
+      description: 'Sınav kaygısı, motivasyon ve performans yönetimini birlikte ele alan öğrenci süreci.',
+    },
+    {
+      icon: Layers3,
+      title: 'LGS Eğitim Danışmanlığı',
+      description: 'Yaş dönemine uygun, aile ile iş birliği içeren destekleyici çalışma planı.',
+    },
+    {
+      icon: TestTube2,
+      title: 'MOXO Dikkat Testi Uygulaması',
+      description: 'Dikkat ve odaklanma süreçlerini değerlendirmeye yardımcı uygulama desteği.',
     },
     {
       icon: ShieldCheck,
       title: 'Kaygı ve Stres Yönetimi',
-      description: 'Günlük yaşamı etkileyen yoğun stres, belirsizlik ve kaygı durumlarında baş etme becerilerinizi güçlendirmeye odaklanan görüşmeler yapılır.',
-      features: ['Kaygı tetikleyicilerini anlama', 'Duygu düzenleme becerileri', 'İçsel kaynakları fark etme', 'İşlevsel baş etme yolları'],
-    },
-    {
-      icon: Heart,
-      title: 'Öz Güven ve Duygusal Farkındalık',
-      description: 'Kendilik algınızı güçlendirmek, sınırlarınızı fark etmek ve duygularınızı daha sağlıklı ifade edebilmek için destekleyici bir süreç yürütülür.',
-      features: ['Öz değer çalışmaları', 'Sınır koyma farkındalığı', 'İlişkilerde kendini ifade etme', 'Güçlü yönleri görünür kılma'],
-    },
-    {
-      icon: Globe,
-      title: 'Online Danışmanlık',
-      description: 'Bulunduğunuz yerden bağımsız olarak, güvenli ve planlı bir şekilde çevrim içi görüşme desteği alabilirsiniz.',
-      features: ['Video görüşme', 'Esnek planlama', 'Düzenli online takip', 'Farklı şehirlerden erişim'],
-    },
-    {
-      icon: MapPin,
-      title: 'Yüz Yüze Danışmanlık',
-      description: 'Samsun Atakum’daki ofiste, sakin ve güvenli bir görüşme ortamında birebir danışmanlık desteği sunulur.',
-      features: ['Ofiste birebir görüşme', 'Güvenli görüşme ortamı', 'Randevu planlaması', 'Yapılandırılmış seans süreci'],
+      description: 'Sınav döneminde yoğunlaşan kaygı, baskı ve stres döngülerini yönetmeye odaklı çalışma.',
     },
   ];
 
@@ -47,10 +41,10 @@ const Services = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Hizmetlerim
+            Hizmetler
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Her danışanın ihtiyacına göre şekillenen, destekleyici, etik ve kişiselleştirilmiş psikolojik danışmanlık süreçleri sunuyorum.
+            Öğrencinin ihtiyacına göre şekillenen, psikolojik temelli ve süreç odaklı danışmanlık hizmetleri sunuyorum.
           </p>
         </div>
 
@@ -66,20 +60,9 @@ const Services = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent className="pt-0">
-                <p className="text-muted-foreground mb-6 leading-relaxed">
+                <p className="text-muted-foreground leading-relaxed">
                   {service.description}
                 </p>
-                <ul className="space-y-2 mb-6">
-                  {service.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="text-sm text-muted-foreground flex items-center">
-                      <div className="w-1.5 h-1.5 bg-primary rounded-full mr-3 flex-shrink-0"></div>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-                <Button variant="outline" className="w-full btn-outline-cta">
-                  Detayları Gör
-                </Button>
               </CardContent>
             </Card>
           ))}
@@ -87,10 +70,10 @@ const Services = () => {
 
         <div className="text-center bg-gradient-card rounded-3xl p-12">
           <h3 className="text-3xl font-bold text-foreground mb-4">
-            Size Uygun Danışmanlık Sürecini Birlikte Belirleyelim
+            Çalışma odağını birlikte belirleyelim
           </h3>
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Online ya da yüz yüze görüşme seçenekleriyle, ihtiyaçlarınıza uygun ilk adımı birlikte planlayabiliriz.
+            Online ya da yüz yüze görüşme seçenekleriyle öğrencinin ihtiyacına uygun bir takip sistemi kurabiliriz.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="https://wa.me/905442150995" target="_blank" rel="noopener noreferrer">

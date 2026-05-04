@@ -36,6 +36,19 @@ npm i
 npm run dev
 ```
 
+### Mentora route
+
+Mentora is kept as a separate project. The PDR site only exposes a route button that sends users to the Mentora app.
+
+- Main entry route in PDR: `/mentora`
+- Legacy aliases: `/mentora/giris`, `/mentora/admin`, `/mentora/ogrenci`
+- Target URL is controlled by `VITE_MENTORA_URL`
+- Default local target: `http://localhost:3000/login`
+
+If you want the button to open a different host or path, set `VITE_MENTORA_URL` in your environment for the PDR project.
+
+Environment variables are documented in [`.env.example`](./.env.example).
+
 **Edit a file directly in GitHub**
 
 - Navigate to the desired file(s).

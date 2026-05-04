@@ -16,7 +16,7 @@ const Chatbot = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 1,
-      text: "Merhaba. Ben Psk. Dan. Ruveyda Özdemir'in dijital asistanıyım. Psikolojik danışmanlık süreci, görüşme biçimleri ve randevu hakkında size nasıl yardımcı olabilirim?",
+      text: "Merhaba. Ben Ruveyda Özdemir'in dijital asistanıyım. Danışmanlık süreci, hizmetler ve Mentora hakkında size nasıl yardımcı olabilirim?",
       isUser: false,
     },
   ]);
@@ -57,31 +57,23 @@ const Chatbot = () => {
     setInteractionCount((prev) => prev + 1);
 
     setTimeout(() => {
-      if (interactionCount === 0) {
-        const botResponse: Message = {
-          id: messages.length + 2,
-          text: "İhtiyacınızı daha iyi anlayabilmek için kısa bir ön görüşme planlamak faydalı olabilir. Online ya da yüz yüze görüşme seçenekleri hakkında bilgi paylaşabilirim.",
-          isUser: false,
-        };
-        setIsTyping(false);
-        setMessages((prev) => [...prev, botResponse]);
-      } else {
-        setIsTyping(false);
-        setMessages((prev) => [
-          ...prev,
-          {
-            id: messages.length + 2,
-            text: "Dilerseniz WhatsApp hattı üzerinden doğrudan iletişime geçerek randevu oluşturabilir ve süreç hakkında detaylı bilgi alabilirsiniz.",
-            isUser: false,
-          },
-          {
-            id: messages.length + 3,
-            text: "Aşağıdaki butona tıklayarak WhatsApp sohbetini başlatabilirsiniz.",
-            isUser: false,
-            type: "whatsapp-cta",
-          },
-        ]);
-      }
+      const botResponse: Message = {
+        id: messages.length + 2,
+        text: interactionCount === 0 
+          ? "İsterseniz kısa bir ön görüşme ile hangi hizmetin uygun olduğunu birlikte netleştirebiliriz. Online ve yüz yüze seçenekler için WhatsApp üzerinden de ulaşabilirsiniz."
+          : "Dilerseniz WhatsApp hattı üzerinden doğrudan iletişime geçerek randevu oluşturabilirsiniz.",
+        isUser: false,
+      };
+
+      const ctaMessage: Message = {
+        id: messages.length + 3,
+        text: "Hemen WhatsApp üzerinden iletişime geçmek için aşağıdaki butona tıklayabilirsiniz:",
+        isUser: false,
+        type: "whatsapp-cta",
+      };
+
+      setIsTyping(false);
+      setMessages((prev) => [...prev, botResponse, ctaMessage]);
     }, 1500);
   };
 
@@ -161,13 +153,13 @@ const Chatbot = () => {
                 placeholder="Mesajınızı yazın..."
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
-                disabled={messages.some((m) => m.type === "whatsapp-cta")}
+                disabled={false}
                 className="flex-1 bg-secondary/30 border-border/50 focus-visible:ring-primary rounded-xl"
               />
               <Button
                 type="submit"
                 size="icon"
-                disabled={!inputValue.trim() || messages.some((m) => m.type === "whatsapp-cta")}
+                disabled={!inputValue.trim()}
                 className="bg-primary text-white hover:bg-primary-dark rounded-xl shadow-sm w-10 h-10 transition-transform hover:scale-105"
               >
                 <Send className="w-4 h-4" />

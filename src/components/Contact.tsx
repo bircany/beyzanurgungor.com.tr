@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Phone, Mail, MapPin, Clock, Send, MessageCircle } from 'lucide-react';
+import { Phone, MapPin, Clock, Send, MessageCircle } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -10,7 +10,6 @@ const Contact = () => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
-    email: '',
     phone: '',
     service: '',
     message: '',
@@ -29,41 +28,34 @@ const Contact = () => {
       icon: Phone,
       title: 'Telefon',
       content: '+90 544 215 09 95',
-      description: 'Randevu ve bilgi için arayabilirsiniz',
-    },
-    {
-      icon: Mail,
-      title: 'E-posta',
-      content: 'test@exemple.com',
-      description: 'Mesajlarınıza en kısa sürede dönüş yapılır',
+      description: 'Randevu ve bilgi için ulaşabilirsiniz',
     },
     {
       icon: MapPin,
-      title: 'Adres',
-      content: 'Atakent, 3101. Sk. No:8',
-      description: '55270 Atakum / Samsun',
+      title: 'Konum',
+      content: 'Atakum, Samsun',
+      description: 'Yüz yüze görüşmeler randevu ile planlanır',
     },
     {
       icon: Clock,
-      title: 'Çalışma Saatleri',
-      content: '10.00 - 17.00',
-      description: 'Pazar günü kapalı',
+      title: 'Çalışma Düzeni',
+      content: 'Online ve Yüz Yüze',
+      description: 'Haftalık görüşmeler ve süreç takibi',
     },
   ];
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = `Randevu Talebi: ${formData.service || 'Genel danışmanlık'}`;
-    const body = `Ad: ${formData.firstName}
+    const message = `Danışmanlık Talebi
+Ad: ${formData.firstName}
 Soyad: ${formData.lastName}
-E-posta: ${formData.email}
 Telefon: ${formData.phone}
 İlgilendiği Hizmet: ${formData.service}
 
 Mesaj:
 ${formData.message}`;
 
-    window.location.href = `mailto:test@exemple.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.open(`https://wa.me/905442150995?text=${encodeURIComponent(message)}`, "_blank");
   };
 
   return (
@@ -74,18 +66,18 @@ ${formData.message}`;
             İletişim
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Psikolojik danışmanlık sürecine başlamak ya da size uygun görüşme biçimini birlikte belirlemek için benimle iletişime geçebilirsiniz.
+            Sınav süreciyle ilgili ihtiyaçlarınızı konuşmak ve size uygun danışmanlık biçimini belirlemek için iletişime geçebilirsiniz.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
           <Card className="card-professional">
             <CardHeader>
               <CardTitle className="text-2xl text-foreground">
                 Randevu Talep Formu
               </CardTitle>
               <p className="text-muted-foreground">
-                Formu doldurun, size en uygun görüşme planı için geri dönüş sağlayalım.
+                Kısa bir form doldurarak görüşme planı için ilk adımı atabilirsiniz.
               </p>
             </CardHeader>
             <CardContent>
@@ -116,19 +108,6 @@ ${formData.message}`;
                 </div>
 
                 <div>
-                  <Label htmlFor="email">E-posta</Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    placeholder="ornek@email.com"
-                    required
-                    className="mt-1"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                  />
-                </div>
-
-                <div>
                   <Label htmlFor="phone">Telefon</Label>
                   <Input
                     id="phone"
@@ -145,18 +124,18 @@ ${formData.message}`;
                   <Label htmlFor="service">İlgilendiğiniz Hizmet</Label>
                   <select
                     id="service"
-                    className="mt-1 w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-ring"
+                    className="mt-1 w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-ring bg-background"
                     required
                     value={formData.service}
                     onChange={handleInputChange}
                   >
                     <option value="">Bir hizmet seçin</option>
-                    <option value="bireysel-danismanlik">Bireysel Danışmanlık</option>
-                    <option value="ergen-genc-yetiskin">Ergen / Genç Yetişkin Danışmanlığı</option>
-                    <option value="kaygi-stres">Kaygı ve Stres Yönetimi</option>
-                    <option value="oz-guven">Öz Güven ve Duygusal Farkındalık</option>
-                    <option value="online-danismanlik">Online Danışmanlık</option>
-                    <option value="yuz-yuze-danismanlik">Yüz Yüze Danışmanlık</option>
+                    <option value="KPSS Eğitim Danışmanlığı">KPSS Eğitim Danışmanlığı</option>
+                    <option value="AGS Eğitim Danışmanlığı">AGS Eğitim Danışmanlığı</option>
+                    <option value="YKS Eğitim Danışmanlığı">YKS Eğitim Danışmanlığı</option>
+                    <option value="LGS Eğitim Danışmanlığı">LGS Eğitim Danışmanlığı</option>
+                    <option value="MOXO Dikkat Testi Uygulaması">MOXO Dikkat Testi Uygulaması</option>
+                    <option value="Kaygı ve Stres Yönetimi">Kaygı ve Stres Yönetimi</option>
                     <option value="diger">Diğer</option>
                   </select>
                 </div>
@@ -165,7 +144,7 @@ ${formData.message}`;
                   <Label htmlFor="message">Mesaj</Label>
                   <Textarea
                     id="message"
-                    placeholder="Sürece dair paylaşmak istediğiniz kısa bir not yazabilirsiniz..."
+                    placeholder="Kısaca ihtiyacınızı yazabilirsiniz..."
                     rows={4}
                     className="mt-1"
                     value={formData.message}
@@ -238,67 +217,18 @@ ${formData.message}`;
                       </div>
                     </Button>
                   </a>
-
-                  <a href="mailto:test@exemple.com" className="block">
-                    <Button
-                      variant="outline"
-                      size="lg"
-                      className="w-full btn-outline-cta justify-start"
-                    >
-                      <Mail className="w-5 h-5 mr-3" />
-                      <div className="text-left">
-                        <div className="font-medium">E-posta Gönder</div>
-                        <div className="text-sm text-muted-foreground">test@exemple.com</div>
-                      </div>
-                    </Button>
-                  </a>
                 </div>
               </CardContent>
             </Card>
           </div>
         </div>
 
-        <div className="mt-12">
-          <Card className="card-professional">
-            <CardHeader>
-              <CardTitle className="text-xl text-foreground">
-                Ofis Konumu
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="aspect-[21/9] w-full bg-muted rounded-xl relative overflow-hidden group mb-4">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d374.41541165543396!2d36.24824964473852!3d41.34532623792879!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x408879007feb9bf9%3A0xe2dcd31f6cdd728f!2sPd.Rehberinden%20Psikolojik%20dan%C4%B1%C5%9Fmanl%C4%B1k%20ve%20rehberlik%20merkezi!5e0!3m2!1str!2str!4v1777296187047!5m2!1str!2str"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  className="w-full h-full grayscale hover:grayscale-0 transition-all duration-500"
-                  title="Ofis Konumu"
-                ></iframe>
-              </div>
-              <div className="text-center">
-                <p className="font-medium text-foreground mb-1">
-                  Pd.Rehberinden Psikolojik Danışmanlık ve Rehberlik Merkezi
-                </p>
-                <p className="text-muted-foreground text-sm">
-                  Atakent, 3101. Sk. No:8
-                  <br />
-                  55270 Atakum / Samsun
-                </p>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-
-        <div className="mt-16 text-center bg-gradient-card rounded-3xl p-12">
+        <div className="mt-24 text-center bg-gradient-card rounded-3xl p-12 mb-16">
           <h3 className="text-3xl font-bold text-foreground mb-4">
-            Danışmanlık Sürecine İlk Adım
+            Süreci birlikte yapılandıralım
           </h3>
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Kendinizi daha iyi anlamaya ve ihtiyaçlarınıza uygun bir danışmanlık süreci oluşturmaya bugün başlayabiliriz.
+            Öğrencinin ihtiyacına göre oluşturulmuş, düzenli takip edilen ve sürdürülebilir bir danışmanlık sistemi kurabiliriz.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="tel:+905442150995">
@@ -314,6 +244,18 @@ ${formData.message}`;
               </Button>
             </a>
           </div>
+        </div>
+
+        <div className="rounded-3xl overflow-hidden shadow-card border border-border/50 h-[400px] w-full">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2994.4172403668856!2d36.24592967675122!3d41.34314249871146!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x408879007feb9bf9%3A0xe2dcd31f6cdd728f!2sPd.Rehberinden%20Psikolojik%20Dan%C4%B1%C5%9Fmanl%C4%B1k%20ve%20Rehberlik%20Ofisi!5e0!3m2!1str!2str!4v1746364933930!5m2!1str!2str" 
+            width="100%" 
+            height="100%" 
+            style={{ border: 0 }} 
+            allowFullScreen 
+            loading="lazy" 
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
         </div>
       </div>
     </section>
