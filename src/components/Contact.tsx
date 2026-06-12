@@ -1,18 +1,23 @@
-import { useState } from 'react';
-import { Phone, MapPin, Clock, Send, MessageCircle } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Label } from '@/components/ui/label';
+import { useState } from "react";
+import { Clock, MapPin, MessageCircle, Phone, Send } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { trackContactClick } from "@/lib/analytics";
+
+const PHONE_DISPLAY = "+90 553 775 44 55";
+const PHONE_TEL = "+905537754455";
+const WHATSAPP_URL = "https://wa.me/905537754455";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    phone: '',
-    service: '',
-    message: '',
+    firstName: "",
+    lastName: "",
+    phone: "",
+    service: "",
+    message: "",
   });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -26,26 +31,28 @@ const Contact = () => {
   const contactInfo = [
     {
       icon: Phone,
-      title: 'Telefon',
-      content: '+90 544 215 09 95',
-      description: 'Randevu ve bilgi için ulaşabilirsiniz',
+      title: "Telefon",
+      content: PHONE_DISPLAY,
+      description: "Randevu ve detaylı bilgi için ulaşabilirsiniz",
     },
     {
       icon: MapPin,
-      title: 'Konum',
-      content: 'Atakum, Samsun',
-      description: 'Yüz yüze görüşmeler randevu ile planlanır',
+      title: "Görüşme",
+      content: "Çağ Psikoloji",
+      description: "Çocuk, genç ve yetişkin danışmanlığı",
     },
     {
       icon: Clock,
-      title: 'Çalışma Düzeni',
-      content: 'Online ve Yüz Yüze',
-      description: 'Haftalık görüşmeler ve süreç takibi',
+      title: "Süreç",
+      content: "Ön görüşme ile başlar",
+      description: "İhtiyaca uygun çalışma alanı birlikte belirlenir",
     },
   ];
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    trackContactClick("form");
+
     const message = `Danışmanlık Talebi
 Ad: ${formData.firstName}
 Soyad: ${formData.lastName}
@@ -55,34 +62,34 @@ Telefon: ${formData.phone}
 Mesaj:
 ${formData.message}`;
 
-    window.open(`https://wa.me/905442150995?text=${encodeURIComponent(message)}`, "_blank");
+    window.open(`${WHATSAPP_URL}?text=${encodeURIComponent(message)}`, "_blank");
   };
 
   return (
-    <section id="contact" className="py-24 lg:py-32 bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+    <section id="contact" className="bg-background py-24 lg:py-32">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-16 text-center">
+          <h2 className="mb-6 text-4xl font-bold text-foreground md:text-5xl">
             İletişim
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Sınav süreciyle ilgili ihtiyaçlarınızı konuşmak ve size uygun danışmanlık biçimini belirlemek için iletişime geçebilirsiniz.
+          <p className="mx-auto max-w-3xl text-xl leading-relaxed text-muted-foreground">
+            Detaylı bilgi almak ve randevu oluşturmak için lütfen iletişime geçiniz.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+        <div className="mb-16 grid grid-cols-1 gap-12 lg:grid-cols-2">
           <Card className="card-professional">
             <CardHeader>
               <CardTitle className="text-2xl text-foreground">
                 Randevu Talep Formu
               </CardTitle>
               <p className="text-muted-foreground">
-                Kısa bir form doldurarak görüşme planı için ilk adımı atabilirsiniz.
+                Formu doldurduğunuzda bilgileriniz WhatsApp mesajı olarak hazırlanır.
               </p>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <div>
                     <Label htmlFor="firstName">Ad</Label>
                     <Input
@@ -121,22 +128,24 @@ ${formData.message}`;
                 </div>
 
                 <div>
-                  <Label htmlFor="service">İlgilendiğiniz Hizmet</Label>
+                  <Label htmlFor="service">İlgilendiğiniz Alan</Label>
                   <select
                     id="service"
-                    className="mt-1 w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-ring bg-background"
+                    className="mt-1 w-full rounded-md border border-input bg-background px-3 py-2 focus:outline-none focus:ring-2 focus:ring-ring"
                     required
                     value={formData.service}
                     onChange={handleInputChange}
                   >
-                    <option value="">Bir hizmet seçin</option>
-                    <option value="KPSS Eğitim Danışmanlığı">KPSS Eğitim Danışmanlığı</option>
-                    <option value="AGS Eğitim Danışmanlığı">AGS Eğitim Danışmanlığı</option>
-                    <option value="YKS Eğitim Danışmanlığı">YKS Eğitim Danışmanlığı</option>
-                    <option value="LGS Eğitim Danışmanlığı">LGS Eğitim Danışmanlığı</option>
-                    <option value="MOXO Dikkat Testi Uygulaması">MOXO Dikkat Testi Uygulaması</option>
-                    <option value="Kaygı ve Stres Yönetimi">Kaygı ve Stres Yönetimi</option>
-                    <option value="diger">Diğer</option>
+                    <option value="">Bir alan seçin</option>
+                    <option value="Çocuk Terapisi">Çocuk Terapisi</option>
+                    <option value="Çift ve Aile Danışmanlığı">Çift ve Aile Danışmanlığı</option>
+                    <option value="Bireysel Danışmanlık">Bireysel Danışmanlık</option>
+                    <option value="Oyun Terapisi">Oyun Terapisi</option>
+                    <option value="Ergen Danışmanlığı">Ergen Danışmanlığı</option>
+                    <option value="Ebeveyn Danışmanlığı">Ebeveyn Danışmanlığı</option>
+                    <option value="Moxo Dikkat Testi">Moxo Dikkat Testi</option>
+                    <option value="Dikkat Programı">Dikkat Programı</option>
+                    <option value="Diğer">Diğer</option>
                   </select>
                 </div>
 
@@ -152,8 +161,8 @@ ${formData.message}`;
                   />
                 </div>
 
-                <Button type="submit" size="lg" className="w-full btn-cta">
-                  <Send className="w-5 h-5 mr-2" />
+                <Button type="submit" size="lg" className="btn-cta w-full">
+                  <Send className="mr-2 h-5 w-5" />
                   Randevu Talep Et
                 </Button>
               </form>
@@ -161,20 +170,20 @@ ${formData.message}`;
           </Card>
 
           <div className="space-y-8">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {contactInfo.map((info, index) => (
-                <Card key={index} className="card-professional text-center">
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+              {contactInfo.map((info) => (
+                <Card key={info.title} className="card-professional text-center">
                   <CardContent className="p-6">
-                    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <info.icon className="w-6 h-6 text-primary" />
+                    <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
+                      <info.icon className="h-6 w-6 text-primary" />
                     </div>
-                    <h3 className="font-semibold text-foreground mb-2">
+                    <h3 className="mb-2 font-semibold text-foreground">
                       {info.title}
                     </h3>
-                    <p className="text-foreground font-medium mb-1">
+                    <p className="mb-1 font-medium text-foreground">
                       {info.content}
                     </p>
-                    <p className="text-muted-foreground text-sm">
+                    <p className="text-sm text-muted-foreground">
                       {info.description}
                     </p>
                   </CardContent>
@@ -190,27 +199,25 @@ ${formData.message}`;
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
-                  <a href="tel:+905442150995" className="block">
-                    <Button
-                      variant="outline"
-                      size="lg"
-                      className="w-full btn-outline-cta justify-start"
-                    >
-                      <Phone className="w-5 h-5 mr-3" />
+                  <a href={`tel:${PHONE_TEL}`} className="block" onClick={() => trackContactClick("phone")}>
+                    <Button variant="outline" size="lg" className="btn-outline-cta w-full justify-start">
+                      <Phone className="mr-3 h-5 w-5" />
                       <div className="text-left">
                         <div className="font-medium">Hemen Ara</div>
-                        <div className="text-sm text-muted-foreground">+90 544 215 09 95</div>
+                        <div className="text-sm text-muted-foreground">{PHONE_DISPLAY}</div>
                       </div>
                     </Button>
                   </a>
 
-                  <a href="https://wa.me/905442150995" target="_blank" rel="noopener noreferrer" className="block">
-                    <Button
-                      variant="outline"
-                      size="lg"
-                      className="w-full btn-outline-cta justify-start"
-                    >
-                      <MessageCircle className="w-5 h-5 mr-3" />
+                  <a
+                    href={WHATSAPP_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block"
+                    onClick={() => trackContactClick("whatsapp")}
+                  >
+                    <Button variant="outline" size="lg" className="btn-outline-cta w-full justify-start">
+                      <MessageCircle className="mr-3 h-5 w-5" />
                       <div className="text-left">
                         <div className="font-medium">WhatsApp</div>
                         <div className="text-sm text-muted-foreground">Doğrudan mesaj gönderin</div>
@@ -220,42 +227,22 @@ ${formData.message}`;
                 </div>
               </CardContent>
             </Card>
-          </div>
-        </div>
 
-        <div className="mt-24 text-center bg-gradient-card rounded-3xl p-12 mb-16">
-          <h3 className="text-3xl font-bold text-foreground mb-4">
-            Süreci birlikte yapılandıralım
-          </h3>
-          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Öğrencinin ihtiyacına göre oluşturulmuş, düzenli takip edilen ve sürdürülebilir bir danışmanlık sistemi kurabiliriz.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="tel:+905442150995">
-              <Button size="lg" className="btn-cta">
-                <Phone className="w-5 h-5 mr-2" />
-                Hemen Ara
-              </Button>
-            </a>
-            <a href="https://wa.me/905442150995" target="_blank" rel="noopener noreferrer">
-              <Button variant="outline" size="lg" className="btn-outline-cta">
-                <MessageCircle className="w-5 h-5 mr-2" />
-                WhatsApp Randevu
-              </Button>
-            </a>
+            <div className="rounded-lg bg-gradient-card p-8 shadow-card">
+              <h3 className="mb-3 text-2xl font-bold text-foreground">
+                İlk adımı birlikte atalım
+              </h3>
+              <p className="mb-6 leading-relaxed text-muted-foreground">
+                Çocuğunuz, aileniz ya da kendi süreciniz için hangi çalışma alanının uygun olduğunu kısa bir ön görüşmeyle netleştirebiliriz.
+              </p>
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" onClick={() => trackContactClick("whatsapp")}>
+                <Button size="lg" className="btn-cta">
+                  <MessageCircle className="mr-2 h-5 w-5" />
+                  WhatsApp Randevu
+                </Button>
+              </a>
+            </div>
           </div>
-        </div>
-
-        <div className="rounded-3xl overflow-hidden shadow-card border border-border/50 h-[400px] w-full">
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2994.4172403668856!2d36.24592967675122!3d41.34314249871146!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x408879007feb9bf9%3A0xe2dcd31f6cdd728f!2sPd.Rehberinden%20Psikolojik%20Dan%C4%B1%C5%9Fmanl%C4%B1k%20ve%20Rehberlik%20Ofisi!5e0!3m2!1str!2str!4v1746364933930!5m2!1str!2str" 
-            width="100%" 
-            height="100%" 
-            style={{ border: 0 }} 
-            allowFullScreen 
-            loading="lazy" 
-            referrerPolicy="no-referrer-when-downgrade"
-          ></iframe>
         </div>
       </div>
     </section>

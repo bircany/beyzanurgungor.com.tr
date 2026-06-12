@@ -2,59 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Modern Nutritionist Design System */
+/* Elegant, light psychology practice design system */
 
 @layer base {
   :root {
-    /* Brand - Fresh & Organic */
-    --background: 60 20% 99%;
-    /* Very pale cream/white */
-    --foreground: 150 40% 15%;
-    /* Dark forest green text */
+    --background: 330 45% 99%;
+    --foreground: 272 20% 20%;
 
-    /* Card System */
     --card: 0 0% 100%;
-    --card-foreground: 150 40% 15%;
+    --card-foreground: 272 20% 20%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 150 40% 15%;
+    --popover-foreground: 272 20% 20%;
 
-    /* Primary - Fresh Leaf Green */
-    --primary: 146 65% 40%;
-    /* Modern Green */
+    --primary: 326 34% 46%;
     --primary-foreground: 0 0% 100%;
-    --primary-light: 146 65% 96%;
-    --primary-dark: 146 65% 30%;
+    --primary-light: 326 55% 96%;
+    --primary-dark: 318 28% 30%;
 
-    /* Secondary - Natural Oats/Beige */
-    --secondary: 35 30% 96%;
-    --secondary-foreground: 150 40% 15%;
+    --secondary: 326 42% 96%;
+    --secondary-foreground: 272 20% 20%;
 
-    /* Accent - Fresh Blue (Replacing Reddish) */
-    --accent: 210 70% 60%;
-    /* Fresh Blue */
+    --accent: 236 34% 62%;
     --accent-foreground: 0 0% 100%;
 
-    --muted: 100 10% 96%;
-    --muted-foreground: 150 10% 45%;
+    --muted: 284 24% 96%;
+    --muted-foreground: 276 10% 45%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 146 20% 92%;
-    --input: 146 20% 92%;
-    --ring: 146 65% 40%;
+    --border: 318 28% 90%;
+    --input: 318 28% 90%;
+    --ring: 326 34% 46%;
 
-    --radius: 1rem;
+    --radius: 0.5rem;
 
-    /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(146 30% 97%) 0%, hsl(60 30% 98%) 100%);
-    --gradient-card: linear-gradient(145deg, #ffffff 0%, hsl(146 10% 99%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(326 55% 97%) 0%, hsl(268 45% 98%) 52%, hsl(0 0% 100%) 100%);
+    --gradient-card: linear-gradient(145deg, #ffffff 0%, hsl(326 55% 98%) 100%);
 
-    /* Shadows */
-    --shadow-soft: 0 4px 20px -5px rgba(22, 101, 52, 0.08);
-    /* Green tinted shadow */
-    --shadow-card: 0 10px 40px -10px rgba(22, 101, 52, 0.1);
+    --shadow-soft: 0 4px 20px -5px rgba(126, 72, 113, 0.12);
+    --shadow-card: 0 14px 45px -18px rgba(69, 45, 75, 0.2);
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -67,27 +55,27 @@
   }
 
   .dark {
-    --background: 150 40% 5%;
-    --foreground: 150 20% 90%;
-    --card: 150 40% 8%;
-    --card-foreground: 150 20% 90%;
-    --popover: 150 40% 8%;
-    --popover-foreground: 150 20% 90%;
-    --primary: 146 65% 50%;
-    --primary-foreground: 150 40% 5%;
-    --primary-light: 146 40% 20%;
-    --primary-dark: 146 65% 60%;
-    --secondary: 150 30% 12%;
-    --secondary-foreground: 150 20% 90%;
-    --muted: 150 30% 12%;
-    --muted-foreground: 150 20% 60%;
-    --accent: 12 70% 60%;
-    --accent-foreground: 0 0% 100%;
+    --background: 272 22% 9%;
+    --foreground: 326 35% 92%;
+    --card: 272 22% 12%;
+    --card-foreground: 326 35% 92%;
+    --popover: 272 22% 12%;
+    --popover-foreground: 326 35% 92%;
+    --primary: 326 45% 68%;
+    --primary-foreground: 272 22% 9%;
+    --primary-light: 326 28% 20%;
+    --primary-dark: 326 45% 76%;
+    --secondary: 272 18% 16%;
+    --secondary-foreground: 326 35% 92%;
+    --muted: 272 18% 16%;
+    --muted-foreground: 326 15% 68%;
+    --accent: 236 38% 70%;
+    --accent-foreground: 272 22% 9%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
-    --border: 150 30% 15%;
-    --input: 150 30% 15%;
-    --ring: 146 65% 50%;
+    --border: 272 18% 18%;
+    --input: 272 18% 18%;
+    --ring: 326 45% 68%;
   }
 }
 
@@ -106,13 +94,11 @@
   h4,
   h5,
   h6 {
-    @apply font-heading tracking-tight text-primary;
+    @apply font-heading tracking-normal text-primary;
   }
 }
 
 @layer components {
-
-  /* ... existing component classes adapted to new vars ... */
   .hero-gradient {
     background: var(--gradient-hero);
   }
@@ -121,21 +107,18 @@
     background: var(--gradient-card);
   }
 
-  /* Modern Button variants */
   .btn-cta {
-    @apply bg-primary text-white hover:bg-primary-dark shadow-soft transition-all duration-300 rounded-2xl px-8 py-4 font-medium hover:scale-[1.02] active:scale-[0.98];
+    @apply rounded-lg bg-primary px-8 py-4 font-medium text-white shadow-soft transition-all duration-300 hover:scale-[1.02] hover:bg-primary-dark active:scale-[0.98];
   }
 
   .btn-outline-cta {
-    @apply border-2 border-primary text-primary hover:bg-primary hover:text-white shadow-soft transition-all duration-300 rounded-2xl px-8 py-4 font-medium;
+    @apply rounded-lg border-2 border-primary px-8 py-4 font-medium text-primary shadow-soft transition-all duration-300 hover:bg-primary hover:text-white;
   }
 
-  /* Card styles */
   .card-professional {
-    @apply bg-card rounded-2xl p-6 shadow-card border border-border/60 hover:shadow-lg transition-all duration-300 hover:-translate-y-1;
+    @apply rounded-lg border border-border/60 bg-card p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
   }
 
-  /* Animations */
   .animate-fade-in-up {
     animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }

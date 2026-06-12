@@ -4,40 +4,40 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const Blog = () => {
   return (
-    <section id="blog" className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Zihin ve Başarı Üzerine
+    <section id="blog" className="bg-white py-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-16 text-center">
+          <h2 className="mb-6 text-4xl font-bold text-foreground md:text-5xl">
+            Psikolojik Danışmanlık Yazıları
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Sınav süreçleri, öğrenci psikolojisi ve verimli çalışma stratejileri üzerine paylaşımlarım.
+          <p className="mx-auto max-w-3xl text-xl leading-relaxed text-muted-foreground">
+            Çocuk terapisi, ergen danışmanlığı, aile ilişkileri ve dikkat değerlendirme süreçlerine dair bilgilendirici içerikler.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {blogPosts.map((post, index) => (
-            <Card key={index} className="card-professional flex flex-col h-full hover:shadow-xl transition-all duration-300">
-              <CardContent className="p-8 flex flex-col h-full">
-                <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
-                  <post.icon className="w-6 h-6 text-primary" />
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+          {blogPosts.map((post) => (
+            <Card key={post.slug} className="card-professional flex h-full flex-col transition-all duration-300 hover:shadow-xl">
+              <CardContent className="flex h-full flex-col p-8">
+                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
+                  <post.icon className="h-6 w-6 text-primary" />
                 </div>
-                <div className="text-xs text-primary font-semibold mb-3 tracking-wider uppercase">
+                <div className="mb-3 text-xs font-semibold uppercase tracking-wider text-primary">
                   {post.date}
                 </div>
-                <h3 className="text-2xl font-bold text-foreground mb-4 leading-tight">
+                <h3 className="mb-4 text-2xl font-bold leading-tight text-foreground">
                   {post.title}
                 </h3>
-                <p className="text-muted-foreground leading-relaxed mb-6 flex-grow">
+                <p className="mb-6 flex-grow leading-relaxed text-muted-foreground">
                   {post.excerpt}
                 </p>
-                <div className="pt-4 border-t border-border/50">
-                  <Link 
+                <div className="border-t border-border/50 pt-4">
+                  <Link
                     to={`/blog/${post.slug}`}
-                    className="text-primary font-semibold cursor-pointer hover:underline inline-flex items-center"
+                    className="inline-flex cursor-pointer items-center font-semibold text-primary hover:underline"
                   >
                     Devamını Oku
-                    <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
                   </Link>
@@ -48,8 +48,8 @@ const Blog = () => {
         </div>
 
         <div className="mt-16 text-center">
-          <p className="text-lg text-foreground italic max-w-2xl mx-auto">
-            "Başarı, sadece bilginin değil; zihnin, duyguların ve alışkanlıkların doğru yönetilmesinin sonucudur. Seninle bu yolculuğu birlikte planlayabiliriz."
+          <p className="mx-auto max-w-2xl text-lg italic text-foreground">
+            "Psikolojik danışmanlık süreci; kişinin kendini, ilişkilerini ve ihtiyaçlarını güvenli bir zeminde anlamasına eşlik eder."
           </p>
         </div>
       </div>

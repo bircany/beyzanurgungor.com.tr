@@ -1,9 +1,9 @@
-import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
-import Services from "@/components/Services";
 import About from "@/components/About";
 import Blog from "@/components/Blog";
 import Contact from "@/components/Contact";
+import Hero from "@/components/Hero";
+import Navbar from "@/components/Navbar";
+import Services from "@/components/Services";
 
 const Index = () => {
   return (
@@ -15,15 +15,15 @@ const Index = () => {
       <Blog />
       <Contact />
 
-      <footer className="bg-foreground text-background py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <footer className="bg-foreground py-8 text-background">
+        <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
           <p className="text-sm">
-            © 2026 Psk. Dan. Ruveyda Özdemir. Tüm hakları saklıdır.
+            © 2026 Psikolog Beyzanur Özgüngör. Tüm hakları saklıdır.
           </p>
-          <p className="text-xs mt-2 opacity-80">
-            Öğrencilerin zihinsel süreçlerini anlamaya ve yönetmeye odaklanan danışmanlık yaklaşımı
+          <p className="mt-2 text-xs opacity-80">
+            Çağ Psikoloji | Çocuk, genç, yetişkin, çift ve aile danışmanlığı
           </p>
-          <p className="text-xs mt-4 text-muted-foreground/60">
+          <p className="mt-4 text-xs text-background/55">
             Present by SoftArtStudio
           </p>
         </div>

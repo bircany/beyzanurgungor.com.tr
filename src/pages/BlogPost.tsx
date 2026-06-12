@@ -1,6 +1,6 @@
-import { useParams, Link } from "react-router-dom";
-import { blogPosts } from "@/data/blogPosts";
+import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, Calendar, User } from "lucide-react";
+import { blogPosts } from "@/data/blogPosts";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 
@@ -10,9 +10,9 @@ const BlogPost = () => {
 
   if (!post) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="flex min-h-screen items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-bold mb-4">Yazı Bulunamadı</h1>
+          <h1 className="mb-4 text-4xl font-bold">Yazı Bulunamadı</h1>
           <Link to="/">
             <Button>Anasayfaya Dön</Button>
           </Link>
@@ -24,61 +24,58 @@ const BlogPost = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <article className="pt-32 pb-20 px-4">
-        <div className="max-w-3xl mx-auto">
+      <article className="px-4 pb-20 pt-32">
+        <div className="mx-auto max-w-3xl">
           <Link to="/#blog">
-            <Button variant="ghost" className="mb-8 -ml-4 text-muted-foreground hover:text-primary">
+            <Button variant="ghost" className="-ml-4 mb-8 text-muted-foreground hover:text-primary">
               <ArrowLeft className="mr-2 h-4 w-4" />
               Geri Dön
             </Button>
           </Link>
 
           <div className="mb-10">
-            <div className="flex items-center gap-4 text-sm text-primary font-medium mb-4">
-              <span className="flex items-center gap-1.5 bg-primary/10 px-3 py-1 rounded-full">
+            <div className="mb-4 flex items-center gap-4 text-sm font-medium text-primary">
+              <span className="flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1">
                 <Calendar className="h-4 w-4" />
                 {post.date}
               </span>
               <span className="flex items-center gap-1.5 text-muted-foreground">
                 <User className="h-4 w-4" />
-                Ruveyda Özdemir
+                Psikolog Beyzanur Özgüngör
               </span>
             </div>
-            
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground leading-tight mb-6">
+
+            <h1 className="mb-6 text-4xl font-bold leading-tight text-foreground md:text-5xl">
               {post.title}
             </h1>
           </div>
 
           <div className="prose prose-lg max-w-none prose-primary">
-            <div className="whitespace-pre-line text-foreground/80 leading-relaxed text-lg">
+            <div className="whitespace-pre-line text-lg leading-relaxed text-foreground/80">
               {post.content}
             </div>
           </div>
 
-          <div className="mt-16 pt-10 border-t border-border">
-            <div className="bg-secondary/30 rounded-3xl p-8 text-center">
-              <h3 className="text-2xl font-bold mb-4">Bu süreçte desteğe mi ihtiyacın var?</h3>
-              <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
-                Sınav sürecini yönetmekte zorlanıyorsan, birlikte bir yol haritası çıkarabiliriz. 
-                Online veya yüz yüze danışmanlık için hemen iletişime geçebilirsin.
+          <div className="mt-16 border-t border-border pt-10">
+            <div className="rounded-lg bg-secondary/45 p-8 text-center">
+              <h3 className="mb-4 text-2xl font-bold">Bu süreçte desteğe mi ihtiyacınız var?</h3>
+              <p className="mx-auto mb-8 max-w-xl text-muted-foreground">
+                Size veya çocuğunuza uygun danışmanlık alanını birlikte değerlendirmek için iletişime geçebilirsiniz.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="https://wa.me/905442150995" target="_blank" rel="noopener noreferrer">
-                  <Button size="lg" className="btn-cta w-full sm:w-auto">
-                    WhatsApp ile Görüş
-                  </Button>
-                </a>
-              </div>
+              <a href="https://wa.me/905537754455" target="_blank" rel="noopener noreferrer">
+                <Button size="lg" className="btn-cta w-full sm:w-auto">
+                  WhatsApp ile Görüş
+                </Button>
+              </a>
             </div>
           </div>
         </div>
       </article>
 
-      <footer className="bg-foreground text-background py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <footer className="bg-foreground py-8 text-background">
+        <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
           <p className="text-sm">
-            © 2026 Psk. Dan. Ruveyda Özdemir. Tüm hakları saklıdır.
+            © 2026 Psikolog Beyzanur Özgüngör. Tüm hakları saklıdır.
           </p>
         </div>
       </footer>
