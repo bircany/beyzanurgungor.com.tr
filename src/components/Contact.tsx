@@ -66,8 +66,12 @@ ${formData.message}`;
   };
 
   return (
-    <section id="contact" className="bg-background py-24 lg:py-32">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="relative bg-background py-24 lg:py-32 overflow-hidden">
+      {/* Background Blur Blobs */}
+      <div className="absolute top-1/3 -left-32 -z-10 h-96 w-96 rounded-full bg-primary/6 blur-[110px]" />
+      <div className="absolute bottom-10 -right-32 -z-10 h-80 w-80 rounded-full bg-accent/6 blur-[90px] animate-pulse" />
+
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="mb-16 text-center">
           <h2 className="text-gradient mb-6 text-4xl font-extrabold md:text-5xl">
             İletişim
@@ -77,7 +81,7 @@ ${formData.message}`;
           </p>
         </div>
 
-        <div className="mb-16 grid grid-cols-1 gap-12 lg:grid-cols-2">
+        <div className="mb-16 grid grid-cols-1 gap-12 lg:grid-cols-2 items-start">
           <Card className="card-professional">
             <CardHeader>
               <CardTitle className="text-2xl text-foreground">
@@ -143,8 +147,8 @@ ${formData.message}`;
                     <option value="Oyun Terapisi">Oyun Terapisi</option>
                     <option value="Ergen Danışmanlığı">Ergen Danışmanlığı</option>
                     <option value="Ebeveyn Danışmanlığı">Ebeveyn Danışmanlığı</option>
-                    <option value="Moxo Dikkat Testi">Moxo Dikkat Testi</option>
-                    <option value="Dikkat Programı">Dikkat Programı</option>
+                    <option value="Attentioner Dikkat Programı">Attentioner Dikkat Programı</option>
+                    <option value="PEERS Sosyal Beceri Eğitimi">PEERS Sosyal Beceri Eğitimi</option>
                     <option value="Diğer">Diğer</option>
                   </select>
                 </div>
@@ -190,60 +194,85 @@ ${formData.message}`;
                 </Card>
               ))}
             </div>
+          </div>
+        </div>
 
-            <Card className="card-professional">
-              <CardHeader>
-                <CardTitle className="text-xl text-foreground">
-                  Hızlı İletişim
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  <a href={`tel:${PHONE_TEL}`} className="block" onClick={() => trackContactClick("phone")}>
-                    <Button variant="outline" size="lg" className="btn-outline-cta w-full justify-start">
-                      <Phone className="mr-3 h-5 w-5" />
-                      <div className="text-left">
-                        <div className="font-medium">Hemen Ara</div>
-                        <div className="text-sm text-muted-foreground">{PHONE_DISPLAY}</div>
-                      </div>
-                    </Button>
-                  </a>
+        <Card className="mb-12 card-professional w-full">
+          <CardHeader className="pb-3 text-center">
+            <CardTitle className="text-xl text-foreground">
+              Hızlı İletişim
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <a href={`tel:${PHONE_TEL}`} className="block" onClick={() => trackContactClick("phone")}>
+                <Button variant="outline" size="lg" className="btn-outline-cta w-full justify-start">
+                  <Phone className="mr-3 h-5 w-5 text-primary" />
+                  <div className="text-left">
+                    <div className="font-medium text-foreground">Hemen Ara</div>
+                    <div className="text-sm text-muted-foreground">{PHONE_DISPLAY}</div>
+                  </div>
+                </Button>
+              </a>
 
-                  <a
-                    href={WHATSAPP_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block"
-                    onClick={() => trackContactClick("whatsapp")}
-                  >
-                    <Button variant="outline" size="lg" className="btn-outline-cta w-full justify-start">
-                      <MessageCircle className="mr-3 h-5 w-5" />
-                      <div className="text-left">
-                        <div className="font-medium">WhatsApp</div>
-                        <div className="text-sm text-muted-foreground">Doğrudan mesaj gönderin</div>
-                      </div>
-                    </Button>
-                  </a>
-                </div>
-              </CardContent>
-            </Card>
-
-            <div className="rounded-lg bg-gradient-card p-8 shadow-card">
-              <h3 className="text-gradient mb-3 text-2xl font-extrabold">
-                İlk adımı birlikte atalım
-              </h3>
-              <p className="mb-6 leading-relaxed text-muted-foreground">
-                Çocuğunuz, aileniz ya da kendi süreciniz için hangi çalışma alanının uygun olduğunu kısa bir ön görüşmeyle netleştirebiliriz.
-              </p>
-              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" onClick={() => trackContactClick("whatsapp")}>
-                <Button size="lg" className="btn-cta">
-                  <MessageCircle className="mr-2 h-5 w-5" />
-                  WhatsApp Randevu
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block"
+                onClick={() => trackContactClick("whatsapp")}
+              >
+                <Button variant="outline" size="lg" className="btn-outline-cta w-full justify-start">
+                  <MessageCircle className="mr-3 h-5 w-5 text-primary" />
+                  <div className="text-left">
+                    <div className="font-medium text-foreground">WhatsApp</div>
+                    <div className="text-sm text-muted-foreground">Doğrudan mesaj gönderin</div>
+                  </div>
                 </Button>
               </a>
             </div>
-          </div>
+          </CardContent>
+        </Card>
+
+        <div className="mb-12 rounded-lg bg-gradient-card p-8 shadow-card w-full text-center sm:p-10">
+          <h3 className="text-gradient mb-3 text-2xl font-extrabold sm:text-3xl">
+            İlk adımı birlikte atalım
+          </h3>
+          <p className="mx-auto mb-6 max-w-2xl leading-relaxed text-muted-foreground">
+            Çocuğunuz, aileniz ya da kendi süreciniz için hangi çalışma alanının uygun olduğunu kısa bir ön görüşmeyle netleştirebiliriz.
+          </p>
+          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" onClick={() => trackContactClick("whatsapp")}>
+            <Button size="lg" className="btn-cta">
+              <MessageCircle className="mr-2 h-5 w-5" />
+              WhatsApp Randevu
+            </Button>
+          </a>
         </div>
+
+        <Card className="card-professional overflow-hidden w-full">
+          <CardHeader className="pb-3">
+            <CardTitle className="text-xl text-foreground flex items-center gap-2">
+              <MapPin className="h-5 w-5 text-primary" />
+              Konumumuz
+            </CardTitle>
+            <p className="text-sm text-muted-foreground">
+              Körfez Mahallesi, Atakum Bulvarı, No:21/11, Marina Vista A Blok, Kat:1, Daire:11, Atakum / Samsun
+            </p>
+          </CardHeader>
+          <CardContent className="p-0">
+            <iframe
+              title="Çağ Psikoloji Google Haritası"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2994.492022067756!2d36.2301094!3d41.3713444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40887ff283c267b9%3A0xe7dc52a28ec21bc9!2zw4dhxJ8gUHNpa29sb2pp!5e0!3m2!1str!2str!4v1718228000000!5m2!1str!2str"
+              width="100%"
+              height="380"
+              style={{ border: 0 }}
+              allowFullScreen={true}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="w-full grayscale opacity-85 transition-all duration-300 hover:grayscale-0 hover:opacity-100"
+            />
+          </CardContent>
+        </Card>
       </div>
     </section>
   );

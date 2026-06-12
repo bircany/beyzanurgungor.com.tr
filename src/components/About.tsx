@@ -21,13 +21,17 @@ const About = () => {
     {
       icon: ShieldCheck,
       title: "Değerlendirme Yetkinliği",
-      description: "WISC-4, Moxo Dikkat Testi, özgül öğrenme ve objektif çocuk değerlendirme testleriyle süreci destekler.",
+      description: "WISC-4, Attentioner, özgül öğrenme bataryası ve objektif çocuk değerlendirme testleriyle süreci destekler.",
     },
   ];
 
   return (
-    <section id="about" className="bg-secondary/45 py-20">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section id="about" className="relative bg-secondary/45 py-20 overflow-hidden">
+      {/* Background Blur Blobs */}
+      <div className="absolute top-1/3 -right-32 -z-10 h-80 w-80 rounded-full bg-primary/6 blur-[90px] animate-pulse" />
+      <div className="absolute bottom-10 -left-32 -z-10 h-72 w-72 rounded-full bg-accent/6 blur-[80px]" />
+
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="mb-16 text-center">
           <h2 className="text-gradient mb-6 text-4xl font-extrabold md:text-5xl">
             Biyografi
@@ -49,7 +53,7 @@ const About = () => {
           <Card className="card-professional">
             <CardContent className="p-8">
               <p className="mb-6 text-lg leading-relaxed text-foreground">
-                İstanbul Haliç Üniversitesi Fen ve Edebiyat Fakültesi Psikoloji bölümünü tamamladım. Şu an Ondokuz Mayıs Üniversitesi'nde yüksek lisans yapmaktayım.
+                İstanbul Haliç Üniversitesi Fen ve Edebiyat Fakültesi Psikoloji bölümünü tamamladım. Ondokuz Mayıs Üniversitesi'nde Aile Danışmanlığı yüksek lisansımı tamamladım.
               </p>
               <p className="mb-6 text-lg leading-relaxed text-foreground">
                 Akademik alanda çalışmalarıma devam edebilmek için Psikoloji Bölüm Başkanı Burcu Türk ile beraber TÜBİTAK tarafından desteklenen, "Ortak Ebeveynliğin Çocuklarda Mizacın Sosyal ve Duygusal Yeterlilik Üzerine Etkisi"ni araştıran bilimsel bir çalışma yürüttüm.
@@ -64,7 +68,7 @@ const About = () => {
                 Psk. Dr. Birgül Bakay tarafından verilen Çocuk Merkezli Oyun Terapisi eğitimini tamamladım. Ev Okulu Derneği tarafından verilen çocuklarda bilişsel ve davranışçı terapiler eğitimini tamamladım. Türk Psikologlar Derneği'nden WISC-4 zeka testi ve çocuklarda özgül öğrenme bataryası eğitimlerini tamamladım.
               </p>
               <p className="text-lg leading-relaxed text-foreground">
-                Çocuklarda objektif test eğitimlerini tamamlayarak uygulama ve yorumlama yetkinliği kazandım. Türk Psikologlar Derneği üyesiyim.
+                Çocuklarda objektif test eğitimlerini tamamlayarak uygulama ve yorumlama yetkinliği kazandım. Çocuklarla PEERS® Sosyal Beceri alanında bilimsel çalışmalarımı sürdürmekteyim. Türk Psikologlar Derneği üyesiyim.
               </p>
             </CardContent>
           </Card>

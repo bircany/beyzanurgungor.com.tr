@@ -17,12 +17,16 @@ const Navbar = () => {
   return (
     <nav className="fixed left-0 right-0 top-0 z-50 border-b border-white/70 bg-background/78 shadow-soft backdrop-blur-xl">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
+        <div className="flex h-16 items-center justify-between gap-4">
           <div className="min-w-0 flex-shrink">
-            <h1 className="text-gradient truncate text-lg font-extrabold sm:text-2xl">Psikolog Beyzanur Özgüngör</h1>
+            <h1 className="text-gradient text-sm sm:text-base md:text-lg lg:text-2xl font-extrabold whitespace-nowrap">
+              <span className="inline sm:hidden">Psk. Beyzanur Özgüngör</span>
+              <span className="hidden sm:inline">Psikolog Beyzanur Özgüngör</span>
+            </h1>
           </div>
 
-          <div className="hidden md:block">
+          {/* Desktop Navigation Links */}
+          <div className="hidden lg:block">
             <div className="ml-8 flex items-baseline space-x-6">
               {navItems.map((item) => (
                 <a
@@ -36,34 +40,37 @@ const Navbar = () => {
             </div>
           </div>
 
-          <div className="hidden items-center space-x-4 md:flex">
+          <div className="flex items-center space-x-3">
+            {/* Always visible Randevu Al Button */}
             <a
               href="https://wa.me/905537754455"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackContactClick("whatsapp")}
+              className="flex-shrink-0"
             >
-              <Button size="sm" className="btn-cta !px-4 !py-2">
-                <Phone className="mr-2 h-4 w-4" />
+              <Button size="sm" className="btn-cta !px-3 sm:!px-4 !py-2 text-xs sm:text-sm">
+                <Phone className="mr-1.5 h-3.5 w-3.5 sm:h-4 sm:w-4" />
                 Randevu Al
               </Button>
             </a>
-          </div>
 
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="text-foreground transition-colors duration-200 hover:text-primary"
-              aria-label="Menüyü aç veya kapat"
-            >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
+            {/* Hamburger Menu Button */}
+            <div className="lg:hidden">
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="flex h-10 w-10 items-center justify-center rounded-lg text-foreground transition-colors duration-200 hover:text-primary focus:outline-none"
+                aria-label="Menüyü aç veya kapat"
+              >
+                {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              </button>
+            </div>
           </div>
         </div>
       </div>
 
       {isOpen && (
-        <div className="border-b border-white/70 bg-background/92 backdrop-blur-xl md:hidden">
+        <div className="border-b border-white/70 bg-background/92 backdrop-blur-xl lg:hidden">
           <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
             {navItems.map((item) => (
               <a
@@ -75,20 +82,6 @@ const Navbar = () => {
                 {item.name}
               </a>
             ))}
-            <div className="flex flex-col space-y-2 px-3 pt-4">
-              <a
-                href="https://wa.me/905537754455"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full"
-                onClick={() => trackContactClick("whatsapp")}
-              >
-                <Button size="sm" className="btn-cta w-full">
-                  <Phone className="mr-2 h-4 w-4" />
-                  Randevu Al
-                </Button>
-              </a>
-            </div>
           </div>
         </div>
       )}

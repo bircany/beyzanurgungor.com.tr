@@ -24,7 +24,7 @@ const Index = () => {
             Çağ Psikoloji | Çocuk, genç, yetişkin, çift ve aile danışmanlığı
           </p>
           <p className="mt-4 text-xs text-background/55">
-            Present by SoftArtStudio
+            Present by Softart Studios
           </p>
         </div>
       </footer>

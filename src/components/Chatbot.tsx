@@ -169,30 +169,32 @@ const Chatbot = () => {
       )}
 
       {!isOpen && showTooltip && (
-        <div
-          className="absolute bottom-24 right-0 z-40 flex w-[min(330px,calc(100vw-2rem))] cursor-pointer items-start rounded-lg border border-primary/20 bg-white px-4 py-4 pr-9 text-foreground shadow-card transition-transform animate-fade-in-up hover:scale-[1.02]"
-          onClick={() => {
-            setIsOpen(true);
-            setShowTooltip(false);
-          }}
-        >
-          <div className="mr-3 flex h-10 w-10 flex-shrink-0 animate-pulse items-center justify-center rounded-lg bg-primary/10">
-            <MessageCircle className="h-5 w-5 text-primary" />
-          </div>
-          <div className="min-w-0">
-            <p className="mb-0.5 font-heading text-sm font-semibold text-primary">Randevu Planlayalım</p>
-            <p className="text-xs text-muted-foreground">Size uygun görüşme biçimini birlikte belirleyelim.</p>
-          </div>
-
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
+        <div className="absolute bottom-24 right-0 z-40 animate-float-tooltip">
+          <div
+            className="flex w-[min(330px,calc(100vw-2rem))] cursor-pointer items-start rounded-lg border border-white/50 bg-white/70 px-4 py-4 pr-9 text-foreground shadow-card backdrop-blur-md transition-all duration-300 hover:scale-[1.02] hover:bg-white/80 animate-fade-in-up"
+            onClick={() => {
+              setIsOpen(true);
               setShowTooltip(false);
             }}
-            className="absolute right-2 top-2 flex h-6 w-6 items-center justify-center rounded-full border border-border bg-white text-muted-foreground shadow-md transition-colors hover:bg-destructive hover:text-white"
           >
-            <X className="h-3 w-3" />
-          </button>
+            <div className="mr-3 flex h-10 w-10 flex-shrink-0 animate-pulse items-center justify-center rounded-lg bg-primary/10">
+              <MessageCircle className="h-5 w-5 text-primary" />
+            </div>
+            <div className="min-w-0">
+              <p className="mb-0.5 font-heading text-sm font-semibold text-primary">Randevu Planlayalım</p>
+              <p className="text-xs text-muted-foreground">Size uygun görüşme biçimini birlikte belirleyelim.</p>
+            </div>
+
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setShowTooltip(false);
+              }}
+              className="absolute right-2 top-2 flex h-6 w-6 items-center justify-center rounded-full border border-border bg-white text-muted-foreground shadow-md transition-colors hover:bg-destructive hover:text-white"
+            >
+              <X className="h-3 w-3" />
+            </button>
+          </div>
         </div>
       )}
 

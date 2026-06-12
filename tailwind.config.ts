@@ -15,8 +15,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        heading: ['Manrope', 'sans-serif'],
-        body: ['Nunito Sans', 'sans-serif'],
+        heading: ['"Playfair Display"', 'serif'],
+        body: ['"Plus Jakarta Sans"', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",

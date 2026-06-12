@@ -9,18 +9,23 @@ const specialties = [
   "Oyun Terapisi",
   "Ergen Danışmanlığı",
   "Ebeveyn Danışmanlığı",
-  "Moxo Dikkat Testi",
-  "Dikkat Programı",
+  "Attentioner Dikkat Programı",
+  "PEERS Sosyal Beceri Eğitimi",
 ];
 
 const Hero = () => {
   return (
-    <section id="hero" className="relative flex min-h-screen items-center justify-center hero-gradient">
-      <div className="relative z-10 mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
-        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[0.95fr_1.05fr]">
-          <div className="animate-fade-in-up order-2 flex justify-center lg:order-1 lg:justify-start">
-            <div className="relative w-full max-w-[460px]">
-              <div className="image-soft-motion aspect-[4/5] overflow-hidden rounded-lg border border-white/80 bg-white shadow-card">
+    <section id="hero" className="relative flex min-h-screen items-center justify-center hero-gradient pt-16 overflow-hidden">
+      {/* Background Blur Blobs */}
+      <div className="absolute top-1/4 -left-12 -z-10 h-72 w-72 rounded-full bg-primary/10 blur-[85px] animate-pulse" />
+      <div className="absolute bottom-1/4 -right-12 -z-10 h-80 w-80 rounded-full bg-accent/8 blur-[100px]" style={{ animation: "pulse 6s infinite alternate" }} />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-20">
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
+          {/* Top on Mobile/Tablet, Right on Desktop: Portrait image */}
+          <div className="animate-fade-in-up flex justify-center lg:order-2 lg:justify-end">
+            <div className="w-full max-w-[320px] sm:max-w-[360px] md:max-w-[400px]">
+              <div className="image-soft-motion aspect-[4/5] overflow-hidden rounded-2xl border-4 border-white bg-white shadow-card">
                 <img
                   src="/beyzanur-portrait.jpg"
                   alt="Psikolog Beyzanur Özgüngör"
@@ -30,25 +35,26 @@ const Hero = () => {
             </div>
           </div>
 
-          <div className="animate-fade-in-up order-1 text-center lg:order-2 lg:text-left">
+          {/* Bottom on Mobile/Tablet, Left on Desktop: Text and CTA buttons */}
+          <div className="animate-fade-in-up text-center lg:order-1 lg:text-left">
             <div className="glass-surface mb-5 inline-flex items-center rounded-full px-4 py-2 text-sm font-medium text-primary">
               <Sparkles className="mr-2 h-4 w-4" />
               Çağ Psikoloji
             </div>
 
-            <h1 className="text-gradient mb-6 text-4xl font-extrabold leading-[1.12] md:text-6xl">
+            <h1 className="text-gradient mb-6 text-4xl font-extrabold leading-tight md:text-5xl">
               Merhaba! Ben Psikolog
               <br />
               <span>Beyzanur Özgüngör.</span>
             </h1>
 
-            <p className="mb-8 max-w-3xl text-lg leading-relaxed text-muted-foreground md:text-xl">
+            <p className="mx-auto lg:mx-0 mb-8 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
               Çağ Psikoloji'de, çocuk, genç ve yetişkinlerin ruh sağlığını desteklemek ve yaşam kalitelerini artırmak için psikolojik danışmanlık hizmetleri sunuyorum. Sizinle birlikte bu yolculukta ilerlemekten mutluluk duyarım.
             </p>
 
             <div className="mb-8">
               <h2 className="mb-5 text-2xl font-semibold text-foreground">Uzmanlık Alanlarım</h2>
-              <div className="grid grid-cols-1 gap-4 text-left sm:grid-cols-2">
+              <div className="grid grid-cols-1 gap-4 text-left sm:grid-cols-2 max-w-md mx-auto lg:mx-0">
                 {specialties.map((specialty) => (
                   <div key={specialty} className="group flex items-center gap-3 rounded-lg px-1 py-1 text-base font-semibold text-foreground transition-all duration-300 hover:translate-x-1 hover:text-primary">
                     <CheckCircle2 className="h-5 w-5 flex-shrink-0 text-primary transition-transform duration-300 group-hover:scale-110" />
@@ -78,10 +84,10 @@ const Hero = () => {
             </div>
           </div>
         </div>
+      </div>
 
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 transform animate-bounce">
-          <ArrowDown className="h-6 w-6 text-primary/70" />
-        </div>
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 transform animate-bounce hidden md:block">
+        <ArrowDown className="h-6 w-6 text-primary/70" />
       </div>
     </section>
   );

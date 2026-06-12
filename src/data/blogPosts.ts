@@ -32,16 +32,16 @@ export const blogPosts = [
     date: "Haziran 2026",
   },
   {
-    slug: "moxo-dikkat-testi-ve-dikkat-programi",
-    title: "Moxo Dikkat Testi ve Dikkat Programı Ne Sağlar?",
+    slug: "attentioner-dikkat-programi-ve-dikkat-gelisimi",
+    title: "Attentioner Dikkat Programı ile Dikkat Gelişimi Nasıl Sağlanır?",
     excerpt:
-      "Dikkat güçlüklerini anlamak için yalnızca günlük gözlem yeterli olmayabilir. Moxo Dikkat Testi ve yapılandırılmış dikkat programları süreci daha görünür hale getirir...",
+      "Dikkat eksikliği ve odaklanma güçlüklerini desteklemek amacıyla geliştirilen Attentioner programı, çocuk ve ergenlerde seçici, bölünmüş ve odaklanmış dikkat işlevlerini yapılandırılmış egzersizlerle geliştirir...",
     content: `
-      Dikkat, öğrenme ve günlük yaşam becerileri üzerinde önemli bir etkiye sahiptir. Dikkat güçlükleri bazen odaklanmada zorlanma, çabuk sıkılma, dürtüsellik, zamanlama sorunları veya akademik performansta dalgalanma olarak görülebilir.
+      Attentioner Dikkat Programı, çocuk ve ergenlerin dikkat, odaklanma ve dürtü kontrolü gibi yürütücü işlevlerini geliştirmeyi amaçlayan, nöropsikolojik temellere dayalı yapılandırılmış bir eğitim programıdır.
 
-      Moxo Dikkat Testi; dikkat, zamanlama, dürtüsellik ve hiperaktivite alanlarını değerlendirmeye yardımcı bilgisayar destekli bir testtir.
+      Genellikle 7-18 yaş aralığına uygulanan bu program; seçici dikkat, bölünmüş dikkat, odaklanma ve zamanlama becerilerini güçlendirir. Oturumlarda beyni sistematik olarak artan düzeyde çoklu uyaranlarla karşı karşıya bırakarak bilişsel işlevlerin geliştirilmesi amaçlanır.
 
-      Değerlendirme sonrasında dikkat programı ile çocuğun ya da gencin ihtiyaç duyduğu beceriler daha yapılandırılmış biçimde desteklenebilir. Bu süreç aile ve okul gözlemleriyle birlikte ele alındığında daha sağlıklı bir yol haritası oluşturulabilir.
+      Bu süreçte kullanılan eğlenceli ve motive edici ögeler, çocukların dürtü kontrolünü ve davranış organizasyonunu desteklerken; programa eklenen aile oturumları sayesinde edinilen kazanımların günlük hayata aktarılması kolaylaşır.
     `,
     icon: Brain,
     date: "Haziran 2026",
