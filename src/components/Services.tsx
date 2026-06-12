@@ -63,7 +63,7 @@ const Services = () => {
     <section id="services" className="bg-background py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-16 text-center">
-          <h2 className="mb-6 text-4xl font-bold text-foreground md:text-5xl">
+          <h2 className="text-gradient mb-6 text-4xl font-extrabold md:text-5xl">
             Uzmanlık Alanlarım
           </h2>
           <p className="mx-auto max-w-3xl text-xl leading-relaxed text-muted-foreground">
@@ -94,7 +94,7 @@ const Services = () => {
         <div className="rounded-lg bg-gradient-card p-8 shadow-card sm:p-10 lg:p-12">
           <div className="mb-8 flex flex-col gap-4 text-center lg:flex-row lg:items-end lg:justify-between lg:text-left">
             <div>
-              <h3 className="mb-3 text-3xl font-bold text-foreground">
+              <h3 className="text-gradient mb-3 text-3xl font-extrabold">
                 Aldığım Eğitimler
               </h3>
               <p className="max-w-2xl text-lg text-muted-foreground">

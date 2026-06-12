@@ -15,8 +15,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        heading: ['Plus Jakarta Sans', 'sans-serif'],
-        body: ['Inter', 'sans-serif'],
+        heading: ['Manrope', 'sans-serif'],
+        body: ['Nunito Sans', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",

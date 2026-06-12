@@ -15,11 +15,11 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="fixed left-0 right-0 top-0 z-50 border-b border-border/60 bg-background/92 backdrop-blur-md">
+    <nav className="fixed left-0 right-0 top-0 z-50 border-b border-white/70 bg-background/78 shadow-soft backdrop-blur-xl">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <div className="min-w-0 flex-shrink">
-            <h1 className="truncate text-lg font-bold text-primary sm:text-2xl">Psikolog Beyzanur Özgüngör</h1>
+            <h1 className="text-gradient truncate text-lg font-extrabold sm:text-2xl">Psikolog Beyzanur Özgüngör</h1>
           </div>
 
           <div className="hidden md:block">
@@ -28,7 +28,7 @@ const Navbar = () => {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="px-2 py-2 text-sm font-medium text-foreground transition-colors duration-200 hover:text-primary"
+                  className="px-2 py-2 text-sm font-semibold text-foreground transition-colors duration-200 hover:text-primary"
                 >
                   {item.name}
                 </a>
@@ -63,13 +63,13 @@ const Navbar = () => {
       </div>
 
       {isOpen && (
-        <div className="border-b border-border/60 bg-background md:hidden">
+        <div className="border-b border-white/70 bg-background/92 backdrop-blur-xl md:hidden">
           <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
             {navItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                className="block px-3 py-2 text-base font-medium text-foreground transition-colors duration-200 hover:text-primary"
+                className="block px-3 py-2 text-base font-semibold text-foreground transition-colors duration-200 hover:text-primary"
                 onClick={() => setIsOpen(false)}
               >
                 {item.name}

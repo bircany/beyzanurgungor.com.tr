@@ -69,7 +69,7 @@ ${formData.message}`;
     <section id="contact" className="bg-background py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-16 text-center">
-          <h2 className="mb-6 text-4xl font-bold text-foreground md:text-5xl">
+          <h2 className="text-gradient mb-6 text-4xl font-extrabold md:text-5xl">
             İletişim
           </h2>
           <p className="mx-auto max-w-3xl text-xl leading-relaxed text-muted-foreground">
@@ -229,7 +229,7 @@ ${formData.message}`;
             </Card>
 
             <div className="rounded-lg bg-gradient-card p-8 shadow-card">
-              <h3 className="mb-3 text-2xl font-bold text-foreground">
+              <h3 className="text-gradient mb-3 text-2xl font-extrabold">
                 İlk adımı birlikte atalım
               </h3>
               <p className="mb-6 leading-relaxed text-muted-foreground">

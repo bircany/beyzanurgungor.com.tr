@@ -29,7 +29,7 @@ const About = () => {
     <section id="about" className="bg-secondary/45 py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-16 text-center">
-          <h2 className="mb-6 text-4xl font-bold text-foreground md:text-5xl">
+          <h2 className="text-gradient mb-6 text-4xl font-extrabold md:text-5xl">
             Biyografi
           </h2>
           <p className="mx-auto max-w-3xl text-xl leading-relaxed text-muted-foreground">
@@ -71,7 +71,7 @@ const About = () => {
         </div>
 
         <div>
-          <h3 className="mb-12 text-center text-3xl font-bold text-foreground">
+          <h3 className="text-gradient mb-12 text-center text-3xl font-extrabold">
             Danışmanlık Yaklaşımım
           </h3>
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">

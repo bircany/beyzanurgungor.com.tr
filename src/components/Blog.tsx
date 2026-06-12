@@ -7,7 +7,7 @@ const Blog = () => {
     <section id="blog" className="bg-white py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-16 text-center">
-          <h2 className="mb-6 text-4xl font-bold text-foreground md:text-5xl">
+          <h2 className="text-gradient mb-6 text-4xl font-extrabold md:text-5xl">
             Psikolojik Danışmanlık Yazıları
           </h2>
           <p className="mx-auto max-w-3xl text-xl leading-relaxed text-muted-foreground">

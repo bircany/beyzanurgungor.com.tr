@@ -39,7 +39,8 @@
     --radius: 0.5rem;
 
     --gradient-hero: linear-gradient(135deg, hsl(326 55% 97%) 0%, hsl(268 45% 98%) 52%, hsl(0 0% 100%) 100%);
-    --gradient-card: linear-gradient(145deg, #ffffff 0%, hsl(326 55% 98%) 100%);
+    --gradient-card: linear-gradient(145deg, rgba(255, 255, 255, 0.92) 0%, hsl(326 55% 98% / 0.94) 100%);
+    --gradient-text: linear-gradient(110deg, hsl(318 28% 30%) 0%, hsl(326 34% 46%) 46%, hsl(236 34% 62%) 100%);
 
     --shadow-soft: 0 4px 20px -5px rgba(126, 72, 113, 0.12);
     --shadow-card: 0 14px 45px -18px rgba(69, 45, 75, 0.2);
@@ -101,22 +102,57 @@
 @layer components {
   .hero-gradient {
     background: var(--gradient-hero);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-gradient::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(120deg, transparent 0%, hsl(326 80% 98% / 0.55) 38%, transparent 72%),
+      linear-gradient(180deg, hsl(0 0% 100% / 0.24), transparent 58%);
+    filter: blur(18px);
+    opacity: 0.9;
+    transform: translate3d(0, 0, 0);
+    animation: gradientSweep 12s ease-in-out infinite alternate;
+    pointer-events: none;
   }
 
   .card-gradient {
     background: var(--gradient-card);
   }
 
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-text);
+  }
+
+  .glass-surface {
+    @apply border border-white/70 bg-white/70 shadow-card backdrop-blur-xl;
+  }
+
   .btn-cta {
-    @apply rounded-lg bg-primary px-8 py-4 font-medium text-white shadow-soft transition-all duration-300 hover:scale-[1.02] hover:bg-primary-dark active:scale-[0.98];
+    @apply rounded-lg bg-primary px-8 py-4 font-medium text-white shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.02] hover:bg-primary-dark active:scale-[0.98];
+    box-shadow: 0 18px 32px -18px hsl(326 34% 46% / 0.65);
   }
 
   .btn-outline-cta {
-    @apply rounded-lg border-2 border-primary px-8 py-4 font-medium text-primary shadow-soft transition-all duration-300 hover:bg-primary hover:text-white;
+    @apply rounded-lg border-2 border-primary bg-white/55 px-8 py-4 font-medium text-primary shadow-soft backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary hover:text-white;
   }
 
   .card-professional {
-    @apply rounded-lg border border-border/60 bg-card p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
+    @apply rounded-lg border border-white/70 bg-card/85 p-6 shadow-card backdrop-blur-md transition-all duration-500 hover:-translate-y-1 hover:border-primary/20 hover:shadow-lg;
+  }
+
+  .card-professional:hover {
+    box-shadow: 0 22px 55px -26px hsl(318 28% 30% / 0.42);
+  }
+
+  .image-soft-motion {
+    animation: softFloat 7s ease-in-out infinite;
+    will-change: transform;
   }
 
   .animate-fade-in-up {
@@ -132,6 +168,35 @@
     to {
       opacity: 1;
       transform: translateY(0);
+    }
+  }
+
+  @keyframes gradientSweep {
+    from {
+      transform: translate3d(-4%, -2%, 0) scale(1);
+    }
+
+    to {
+      transform: translate3d(4%, 2%, 0) scale(1.03);
+    }
+  }
+
+  @keyframes softFloat {
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+
+    50% {
+      transform: translate3d(0, -8px, 0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-gradient::before,
+    .image-soft-motion,
+    .animate-fade-in-up {
+      animation: none;
     }
   }
 }
