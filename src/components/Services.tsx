@@ -61,11 +61,7 @@ const Services = () => {
     { name: "Çocuklarda Özgül Öğrenme Bozukluğu Bataryası" },
     { name: "Yaratıcı Drama ile Akran Zorbalığı Eğitimi" },
     { name: "Aile Danışmanlığı Eğitimi" },
-    { 
-      name: "PEERS Sosyal Beceri Eğitimi", 
-      highlight: true, 
-      badge: "Türkiye'de uygulayıcısı az olan özel eğitim" 
-    },
+    { name: "PEERS Sosyal Beceri Eğitimi" },
     { name: "Çocuklarda Bilişsel Davranışçı Oyun Terapisi ve Sanat Terapisi" },
   ];
 

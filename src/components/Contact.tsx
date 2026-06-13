@@ -256,7 +256,7 @@ ${formData.message}`;
               Konumumuz
             </CardTitle>
             <p className="text-sm text-muted-foreground">
-              Körfez Mahallesi, Atakum Bulvarı, No:21/11, Marina Vista A Blok, Kat:1, Daire:11, Atakum / Samsun
+              Körfez, Atakum bulvarı no:21/11, 55200 Atakum/Samsun
             </p>
           </CardHeader>
           <CardContent className="p-0">
